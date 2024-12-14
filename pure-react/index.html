@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pure React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+/*         const rootElement = document.querySelector('#root');
+
+        const element = React.createElement('h1', null, 'Merhaba React');
+
+        ReactDOM.createRoot(rootElement).render(element); */
+
+/*     const rootElement = document.querySelector('#root');  
+
+    const element = React.createElement(
+        'div', 
+        null,
+        React.createElement('h1', {style:{color: 'blue'}}, 'Pure React'),
+        React.createElement('p', null, 'JSX kullnamıyoruz')
+    )
+    
+    ReactDOM.createRoot(rootElement).render(element); */
+
+    //JSX version
+
+    const rootElement = document.querySelector('#root'); 
+
+    const element = (
+        <div>
+            <h1 style= {{color: 'blue'}}>Pure React </h1>
+            <p>JSX kullanıyoruz</p>
+        </div>
+    );
+
+    ReactDOM.createRoot(rootElement).render(element); 
+
+    </script>
+  </body>
+</html>
