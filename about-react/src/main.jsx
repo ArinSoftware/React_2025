@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 
 import "./App.css";
+import { StrictMode } from "react";
 
 const rootElement = document.querySelector('#root');
 
@@ -64,7 +65,8 @@ function TeamMembers() {
 
             {
                 teamMembersData.map((member) => (
-                    <TeamMember 
+                    <TeamMember
+                        key={member.name} 
                         name={member.name} 
                         description={member.description} 
                         image={member.image} 
@@ -82,7 +84,7 @@ function TeamMembers() {
 function TeamMember({name, description, image, codepenLink, codepenName, isCofunder}) {
 
     return (
-        <li className="member co-funder">
+        <li className={`member ${isCofunder ? 'co-funder': ''}`}>
             <div className="thumb"><img src={image}/></div>
             <div className="description">
                 <h3>{name}</h3>
@@ -93,5 +95,7 @@ function TeamMember({name, description, image, codepenLink, codepenName, isCofun
 }
 
 createRoot(rootElement).render(
-    <App />
+    <StrictMode>
+        <App />
+    </StrictMode>  
 );
