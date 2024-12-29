@@ -217,3 +217,36 @@ table.table .avatar {
 .modal form label {
     font-weight: normal;
 }
+
+/* Modal transitions */
+.modal {
+    transition: opacity 0.15s linear;
+  }
+  
+  .modal.fade {
+    opacity: 0;
+  }
+  
+  .modal.fade.show {
+    opacity: 1;
+  }
+  
+  /* Modal backdrop */
+  .modal-backdrop {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+  }
+  
+  .modal-backdrop.show {
+    opacity: 0.5;
+  }
+  
+  /* Fix for modal display */
+  .modal.fade.show {
+    display: block;
+  }
+
+/* Center modal vertically */
+.modal .modal-dialog {
+    margin-top: 200px;
+  }
