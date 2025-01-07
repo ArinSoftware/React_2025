@@ -19,7 +19,7 @@ function EmployeeItem({ employee, onEditClick }) {
         <td>{employee.gender}</td>
         <td>{employee.department}</td>
         <td>
-          <a onClick={handleEditClick} href="#editEmployeeModal" className="edit"><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a onClick={handleEditClick} className="edit"><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
           <a href="#deleteEmployeeModal" className="delete" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
         </td>
       </tr>
