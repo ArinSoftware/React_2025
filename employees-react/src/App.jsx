@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
 import Header from "./components/Header";
-import AddEmployeeModal from "./components/AddEmployeeModal";
-import EditEmployeeModal from "./components/EditEmployeeModal";
 import EmployeeList from "./components/EmployeeList";
+import EmployeeModal from "./components/EmployeeModal";
 
 function App() {
 
@@ -85,12 +84,18 @@ function App() {
                     selectedEmployees = {selectedEmployees}
                     setSelectedEmployees = {setSelectedEmployees}
                 />
-                <AddEmployeeModal isOpen={isAddModalOpen} onCloseAddModal={() => setIsAddModalOpen(false)} onAddEmployee={addEmployee} />
-                <EditEmployeeModal
+                <EmployeeModal 
+                    mode="add"
+                    isOpen={isAddModalOpen}
+                    onClose={() => setIsAddModalOpen(false)}
+                    onSubmit={addEmployee}
+                />
+                <EmployeeModal
+                    mode="edit" 
                     isOpen={isEditModalOpen}
                     employee={selectedEmployee}
-                    onCloseEditModal={closeEditModal}
-                    onEditEmployee={editEmployee}
+                    onClose={closeEditModal}
+                    onSubmit={editEmployee}
                 />
             </div>
         </div>
