@@ -16,11 +16,19 @@ function App() {
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [selectedEmployees, setSelectedEmployees] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
+    const itemsPerPage = 2;
 
     const indexOfLastEmployee = currentPage * itemsPerPage;
     const indexOfFirstEmployee = indexOfLastEmployee - itemsPerPage;
     const currentEmployees = employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
+    console.log("currentEmployees");
+
+/*     function getCurrentEmployees() {
+        console.log("getCurrentEmployees FIRED");
+        const indexOfLastEmployee = currentPage * itemsPerPage;
+        const indexOfFirstEmployee = indexOfLastEmployee - itemsPerPage;
+        return employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
+    } */
 
 
     useEffect(() => {
@@ -77,6 +85,10 @@ function App() {
         }
     }
 
+    function handlePageChange(pageNumber) {
+        setCurrentPage(pageNumber);
+    }
+
 
     return (
         <div className="container">
@@ -110,6 +122,7 @@ function App() {
                     <Pagination 
                         currentPage={currentPage}
                         totalPages={Math.ceil(employees.length / itemsPerPage)}
+                        onPageChange={handlePageChange}
                     />
                 </div>
 

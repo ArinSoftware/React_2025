@@ -1,18 +1,54 @@
-export default function Pagination({currentPage, totalPages}) {
+export default function Pagination({ currentPage, totalPages, onPageChange }) {
 
-    console.log("currentPage", currentPage);
-    console.log("totalPages", totalPages);
+    const pageNumbers = [];
 
-  return (
-    <ul className="pagination">
-    <li className="page-item disabled"><a href="#">Previous</a></li>
-    <li className="page-item"><a href="#" className="page-link">1</a></li>
-    <li className="page-item"><a href="#" className="page-link">2</a></li>
-    <li className="page-item active"><a href="#" className="page-link">3</a></li>
-    <li className="page-item"><a href="#" className="page-link">4</a></li>
-    <li className="page-item"><a href="#" className="page-link">5</a></li>
-    <li className="page-item"><a href="#" className="page-link">Next</a></li>
-</ul>
-  )
+    for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i)
+    }
+    
+    return (
+        <ul className="pagination">
+
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                <a
+                    className="page-link"
+                    onClick={() => onPageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    style={{cursor: currentPage === 1 ? '' : 'pointer'}}
+                >
+                    Previous
+                </a>
+            </li>
+
+            {
+                pageNumbers.map(number => (
+                    <li
+                        key={number}
+                        className={`page-item ${currentPage === number ? 'active' : ''}`}
+                    >
+                        <a
+                            className="page-link"
+                            onClick={() => onPageChange(number)}
+                            style={{cursor: 'pointer'}}
+                        >
+                            {number}
+                        </a>
+
+                    </li>
+                ))
+            }
+
+            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                <a
+                    className="page-link"
+                    onClick={() => onPageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    style={{cursor: currentPage === totalPages ? '' : 'pointer'}}
+                >
+                    Next
+                </a>
+            </li>
+        </ul>
+    )
 }
 
