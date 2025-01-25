@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 import Header from "./components/Header";
 import EmployeeList from "./components/EmployeeList";
@@ -18,17 +18,11 @@ function App() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 2;
 
-    const indexOfLastEmployee = currentPage * itemsPerPage;
-    const indexOfFirstEmployee = indexOfLastEmployee - itemsPerPage;
-    const currentEmployees = employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
-    console.log("currentEmployees");
-
-/*     function getCurrentEmployees() {
-        console.log("getCurrentEmployees FIRED");
+    const currentEmployees = useMemo(() => {
         const indexOfLastEmployee = currentPage * itemsPerPage;
         const indexOfFirstEmployee = indexOfLastEmployee - itemsPerPage;
         return employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
-    } */
+    }, [employees, currentPage])
 
 
     useEffect(() => {
